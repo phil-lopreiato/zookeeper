@@ -6,6 +6,7 @@
 .settings/
 build/
 out/
+logs/
 *.iml
 src/c/core.*
 src/c/TEST-*.txt
