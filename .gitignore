@@ -17,3 +17,4 @@ src/java/generated/
 src/java/lib/ant-eclipse-*
 src/java/lib/ivy-*
 src/java/lib/jdiff/zookeeper_3.5.2-alpha.xml
+conf/zoo.cfg*
