@@ -303,7 +303,6 @@ static void take_latch_setter_trigger_latch(take_latch_t *latch){
         take_latch_destroy_unsafe(latch);
         break;
     case take_triggered:
-        LOG_DEBUG(("Error! Latch was triggered twice."));
         break;
     case take_waiting:
         pthread_cond_signal(&(latch->latch_condition));
@@ -323,10 +322,8 @@ static void take_latch_waiter_await(take_latch_t *latch){
         take_latch_destroy_unsafe(latch);
         break;
     case take_waiting:
-        LOG_DEBUG(("Error! Called await twice."));
         break;
     case take_not_needed:
-        LOG_DEBUG(("Error! Waiting after marking not needed."));
         break;
     case take_triggered:
         take_latch_destroy_unsafe(latch);
@@ -343,10 +340,8 @@ static void take_latch_waiter_mark_unneeded(take_latch_t *latch){
         latch->state = take_not_needed;
         break;
     case take_waiting:
-        LOG_DEBUG(("Error! Can't mark unneeded after waiting."));
         break;
     case take_not_needed:
-        LOG_DEBUG(("Marked unneeded twice."));
         break;
     case take_triggered:
         take_latch_destroy_unsafe(latch);
